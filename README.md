@@ -28,3 +28,12 @@ If you want to run Atari Game environments, run:
 cd online
 python train.py
 ```
+# Citation
+```
+@article{yang2024exploration,
+  title={Exploration and Anti-Exploration with Distributional Random Network Distillation},
+  author={Yang, Kai and Tao, Jian and Lyu, Jiafei and Li, Xiu},
+  journal={arXiv preprint arXiv:2401.09750},
+  year={2024}
+}
+```
