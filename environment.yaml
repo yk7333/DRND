@@ -1,0 +1,35 @@
+name: drnd
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - six
+  - pip:
+    - atari-py
+    - gym==0.23.1
+    - gym[atari]
+    - gym[accept-rom-license]
+    - tensorboard
+    - torch
+    - torchvision
+    - torchaudio
+    - jax==0.4.13
+    - jax-jumpy==1.0.0
+    - jaxlib==0.4.13
+    - jaxopt==0.6
+    - nes-py==8.2.1
+    - opencv-python
+    - protobuf==3.20.0
+    - mujoco
+    - mujoco-py
+    - pyrallis
+    - optax
+    - flax
+    - distrax
+    - cython
+    - pynvml
+    - gin-config
+    - git+https://github.com/Farama-Foundation/d4rl@master#egg=d4rl
