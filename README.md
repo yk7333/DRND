@@ -25,6 +25,6 @@ sh train.sh --env_name walker2d --dataset_name walker2d_medium  --actor_lambda 1
 ## 2.2 Running Online Experiments
 If you want to run Atari Game environments, run:
 ```
-cd online/atari
+cd online
 python train.py
 ```
