@@ -46,7 +46,7 @@ def main():
     int_gamma = float(default_config['IntGamma'])
     clip_grad_norm = float(default_config['ClipGradNorm'])
     ext_coef = float(default_config['ExtCoef'])
-    int_coef = 0.0 if train_method in ["PPO", "ppo"] else float(default_config['IntCoef'])
+    int_coef = float(default_config['IntCoef'])
 
     sticky_action = default_config.getboolean('StickyAction')
     action_prob = float(default_config['ActionProb'])
