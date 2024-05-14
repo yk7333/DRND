@@ -1,5 +1,5 @@
 # Distributional Random Network Distillation (DRND)
-Code for ICML 2024 paper "Exploration and Anti-exploration with Distributional Random Network Distillation". This repository includes all the code needed to run all the experiments described in our paper.
+Code for ICML 2024 paper "Exploration and Anti-exploration with Distributional Random Network Distillation".
 
 ![DRND](drnd.png)
 
