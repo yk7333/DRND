@@ -192,28 +192,18 @@ class DRNDModel(nn.Module):
             nn.Linear(512, 512),
         ).to(device)
 
-        self.target = [nn.Sequential(
-            nn.Conv2d(
-                in_channels=1,
-                out_channels=32,
-                kernel_size=8,
-                stride=4),
-            nn.LeakyReLU(),
-            nn.Conv2d(
-                in_channels=32,
-                out_channels=64,
-                kernel_size=4,
-                stride=2),
-            nn.LeakyReLU(),
-            nn.Conv2d(
-                in_channels=64,
-                out_channels=64,
-                kernel_size=3,
-                stride=1),
-            nn.LeakyReLU(),
-            Flatten(),
-            nn.Linear(feature_output, 512)
-        ).to(device) for _ in range(num)]
+        self.target = nn.ModuleList([
+            nn.Sequential(
+                nn.Conv2d(in_channels=1, out_channels=32, kernel_size=8, stride=4),
+                nn.LeakyReLU(),
+                nn.Conv2d(in_channels=32, out_channels=64, kernel_size=4, stride=2),
+                nn.LeakyReLU(),
+                nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, stride=1),
+                nn.LeakyReLU(),
+                Flatten(),
+                nn.Linear(feature_output, 512)
+            ).to(device) for _ in range(num)
+        ])
 
         for p in self.modules():
             if isinstance(p, nn.Conv2d):
