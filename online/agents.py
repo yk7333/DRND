@@ -31,7 +31,7 @@ class DRNDAgent(object):
             use_noisy_net=False,
             num_target=5,
             drnd_loss_weight=1, 
-            alpha = 0.9
+            alpha = 0.95
             eta=None):
         self.model = CnnActorCriticNetwork(input_size, output_size, use_noisy_net)
         self.num_env = num_env
@@ -76,7 +76,7 @@ class DRNDAgent(object):
         predict_next_feature, target_next_feature = self.drnd(next_obs)
         mu = torch.mean(target_next_feature,axis=0)
         B2 = torch.mean(target_next_feature**2,axis=0)
-        intrinsic_reward = self.alpha*(predict_next_feature - mu).pow(2).sum(1)+ (1 - self.alpha)*torch.mean(torch.sqrt(torch.clip(abs(predict_next_feature ** 2 - mu ** 2) / (B2 - mu ** 2),1e-3,1)), axis=1)
+        intrinsic_reward = self.alpha*(predict_next_feature - mu).pow(2).sum(1)+ (1 - self.alpha)*torch.sum(torch.sqrt(torch.clip(torch.abs(predict_next_feature ** 2 - mu ** 2) / (B2 - mu ** 2),1e-6,1)), axis=1)
 
         return intrinsic_reward.data.cpu().numpy()
 
